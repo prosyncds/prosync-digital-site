@@ -669,13 +669,13 @@ function PipelineGrowthChart() {
               background: "rgba(10,12,20,0.92)",
               color: "#e5e7eb",
             }}
-            formatter={(value: number, name: string) => [
-              `${Math.round(value)} ${
-                name === "Leads Converted"
+            formatter={(value, name) => [
+              `${Math.round(Number(value ?? 0))} ${
+                String(name) === "Leads Converted"
                   ? "leads converted automatically"
                   : "leads captured"
               }`,
-              name,
+              String(name),
             ]}
             labelFormatter={(label) => `Time: ${label}`}
           />
