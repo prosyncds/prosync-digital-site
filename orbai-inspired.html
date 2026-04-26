@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProSync Digital Solutions | AI Systems Company</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #04050a;
+        --panel: rgba(255, 255, 255, 0.04);
+        --panel-2: rgba(255, 255, 255, 0.07);
+        --text: #f6f7fc;
+        --muted: #aab0c4;
+        --line: rgba(255, 255, 255, 0.14);
+        --blue: #7d8dff;
+        --violet: #9d72ff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      .atmosphere {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(70rem 36rem at 92% -5%, rgba(125, 141, 255, 0.25), transparent 60%),
+          radial-gradient(62rem 30rem at -5% 25%, rgba(157, 114, 255, 0.17), transparent 62%),
+          #04050a;
+      }
+
+      .atmosphere::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.25;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+        background-size: 52px 52px;
+        mask-image: radial-gradient(circle at 50% 8%, black 25%, transparent 80%);
+      }
+
+      .orb {
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(90px);
+        animation: drift 14s ease-in-out infinite;
+      }
+
+      .orb.one {
+        width: 30rem;
+        height: 30rem;
+        left: -8rem;
+        top: 7rem;
+        background: rgba(125, 141, 255, 0.2);
+      }
+
+      .orb.two {
+        width: 26rem;
+        height: 26rem;
+        right: -6rem;
+        top: 24rem;
+        background: rgba(157, 114, 255, 0.21);
+        animation-duration: 18s;
+      }
+
+      @keyframes drift {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+        50% {
+          transform: translate3d(20px, -28px, 0);
+        }
+      }
+
+      .wrap {
+        position: relative;
+        z-index: 1;
+        width: min(1280px, calc(100% - 2.4rem));
+        margin: 0 auto;
+      }
+
+      .nav {
+        min-height: 88px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        font-size: 0.76rem;
+      }
+
+      .brand-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(120deg, var(--blue), var(--violet));
+        box-shadow: 0 0 20px rgba(125, 141, 255, 0.7);
+      }
+
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        margin-left: 1.15rem;
+        font-size: 0.88rem;
+      }
+
+      .button {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        text-decoration: none;
+        color: var(--text);
+        padding: 0.78rem 1.2rem;
+        font-size: 0.86rem;
+        font-weight: 600;
+        transition: 220ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        border-color: rgba(125, 141, 255, 0.65);
+      }
+
+      .hero {
+        min-height: calc(100vh - 88px);
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        align-items: center;
+        gap: 2.4rem;
+        padding: 1rem 0 3rem;
+      }
+
+      .badge {
+        display: inline-flex;
+        border-radius: 999px;
+        border: 1px solid rgba(125, 141, 255, 0.44);
+        background: rgba(125, 141, 255, 0.14);
+        padding: 0.43rem 0.86rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: #d2d9ff;
+      }
+
+      h1 {
+        margin: 1rem 0 0.9rem;
+        font-family: Syne, sans-serif;
+        font-size: clamp(2.6rem, 5.6vw, 5.3rem);
+        line-height: 0.98;
+        letter-spacing: -0.03em;
+      }
+
+      .sub {
+        color: var(--muted);
+        max-width: 60ch;
+        line-height: 1.72;
+      }
+
+      .hero-ctas {
+        margin-top: 1.8rem;
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+
+      .button.primary {
+        background: linear-gradient(125deg, #f0f3ff, #c5cffd);
+        color: #0b1022;
+        border-color: transparent;
+      }
+
+      .hero-board {
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 1rem;
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.03));
+        backdrop-filter: blur(14px);
+        box-shadow: 0 0 120px -40px rgba(125, 141, 255, 0.6);
+      }
+
+      .top-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .live {
+        border: 1px solid rgba(45, 212, 191, 0.35);
+        background: rgba(45, 212, 191, 0.16);
+        color: #abf6eb;
+        border-radius: 999px;
+        padding: 0.18rem 0.54rem;
+        font-size: 0.7rem;
+      }
+
+      .pipeline {
+        margin-top: 0.8rem;
+        display: grid;
+        grid-template-columns: 1fr 46px 1fr 46px 1fr;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .block {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 12px;
+        background: rgba(8, 11, 22, 0.88);
+        padding: 0.75rem;
+      }
+
+      .block b {
+        font-size: 0.84rem;
+      }
+
+      .block p {
+        margin: 0.35rem 0 0;
+        color: var(--muted);
+        font-size: 0.74rem;
+      }
+
+      .arrow {
+        text-align: center;
+        color: #c8d1ff;
+        font-size: 1.08rem;
+      }
+
+      .stats {
+        margin-top: 0.9rem;
+        border: 1px solid rgba(125, 141, 255, 0.34);
+        border-radius: 14px;
+        background: rgba(125, 141, 255, 0.1);
+        padding: 0.75rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.7rem;
+      }
+
+      .stat strong {
+        font-size: 1.1rem;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 0.18rem;
+        color: #dde2ff;
+        font-size: 0.74rem;
+      }
+
+      .trust {
+        margin-top: 0.9rem;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.55rem;
+      }
+
+      .trust div {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        text-align: center;
+        color: #949bb1;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.55rem 0.3rem;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      section {
+        padding: 4.4rem 0;
+      }
+
+      .line {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      }
+
+      h2 {
+        margin: 0;
+        font-family: Syne, sans-serif;
+        font-size: clamp(1.85rem, 3.4vw, 3.1rem);
+        line-height: 1.06;
+        letter-spacing: -0.02em;
+      }
+
+      .p {
+        color: var(--muted);
+        max-width: 70ch;
+        margin-top: 0.8rem;
+      }
+
+      .grid-2 {
+        margin-top: 1.2rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.7rem;
+      }
+
+      .chip {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--panel);
+        padding: 0.74rem 0.9rem;
+      }
+
+      .statement {
+        margin-top: 1rem;
+        color: #d8ddf2;
+        font-size: 1.08rem;
+      }
+
+      .service-grid {
+        margin-top: 1.2rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.85rem;
+      }
+
+      .service {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--panel);
+        padding: 1rem;
+        transition: 220ms ease;
+      }
+
+      .service:hover {
+        transform: translateY(-4px);
+        background: var(--panel-2);
+        border-color: rgba(125, 141, 255, 0.5);
+      }
+
+      .service h3 {
+        margin: 0 0 0.46rem;
+      }
+
+      .service p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .workflow {
+        margin-top: 1rem;
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 148px 1fr;
+        gap: 0.9rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--panel);
+        padding: 0.9rem;
+      }
+
+      .step small {
+        color: #ced7ff;
+        letter-spacing: 0.1em;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+      }
+
+      .result-grid {
+        margin-top: 1.1rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.7rem;
+      }
+
+      .result {
+        border: 1px solid rgba(125, 141, 255, 0.35);
+        border-radius: 12px;
+        background: rgba(125, 141, 255, 0.1);
+        padding: 0.75rem 0.9rem;
+      }
+
+      .founder {
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: linear-gradient(170deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+        padding: 1.2rem;
+      }
+
+      .final {
+        border: 1px solid rgba(125, 141, 255, 0.38);
+        border-radius: 24px;
+        padding: 3rem 1.4rem;
+        text-align: center;
+        background: linear-gradient(180deg, rgba(125, 141, 255, 0.16), rgba(125, 141, 255, 0.04));
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: 700ms cubic-bezier(0.21, 0.99, 0.31, 0.99);
+      }
+
+      .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 1080px) {
+        .hero {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          padding-bottom: 2rem;
+        }
+
+        .service-grid,
+        .grid-2,
+        .result-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .pipeline {
+          grid-template-columns: 1fr;
+        }
+
+        .arrow {
+          transform: rotate(90deg);
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .trust {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .step {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="atmosphere">
+      <div class="orb one"></div>
+      <div class="orb two"></div>
+    </div>
+
+    <main class="wrap">
+      <nav class="nav">
+        <div class="brand"><span class="brand-dot"></span> ProSync Digital Solutions</div>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#process">How It Works</a>
+          <a href="#book" class="button">Book a Call</a>
+        </div>
+      </nav>
+
+      <header class="hero reveal">
+        <div>
+          <span class="badge">Built for Scale-Ready Businesses</span>
+          <h1>Custom AI Software That Runs Your Business</h1>
+          <p class="sub">
+            We build and implement AI across your entire business to automate operations,
+            eliminate inefficiencies, and increase revenue.
+          </p>
+          <div class="hero-ctas">
+            <a class="button primary" href="#book">Book a Call</a>
+            <a class="button" href="#process">See How It Works</a>
+          </div>
+        </div>
+
+        <aside class="hero-board">
+          <div class="top-row">
+            <strong>AI Workflow Operating Layer</strong>
+            <span class="live">Live</span>
+          </div>
+          <div class="pipeline">
+            <div class="block">
+              <b>Lead Intake</b>
+              <p>Forms, calls, inbox routed instantly.</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="block">
+              <b>AI Qualification</b>
+              <p>Score, summarize, and prioritize leads.</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="block">
+              <b>Sales Activation</b>
+              <p>Automated next-steps across your stack.</p>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>2.3s</strong><span>Avg AI response</span></div>
+            <div class="stat"><strong>+37%</strong><span>Pipeline growth</span></div>
+            <div class="stat"><strong>-61%</strong><span>Manual admin load</span></div>
+          </div>
+          <div class="trust">
+            <div>CRM</div>
+            <div>Email</div>
+            <div>Calendar</div>
+            <div>Phone</div>
+            <div>Internal Ops</div>
+          </div>
+        </aside>
+      </header>
+
+      <div class="line"></div>
+
+      <section class="reveal">
+        <h2>Most Businesses Are Still Running Manually</h2>
+        <div class="grid-2">
+          <div class="chip">Missed leads</div>
+          <div class="chip">Slow responses</div>
+          <div class="chip">Repetitive admin work</div>
+          <div class="chip">Disconnected systems</div>
+          <div class="chip">Human error costing money</div>
+        </div>
+        <p class="statement">These aren't people problems. They're system problems.</p>
+      </section>
+
+      <section class="reveal">
+        <h2>We Turn Businesses Into AI-Powered Systems</h2>
+        <p class="p">
+          We don't just add tools. We rebuild how your business operates using AI.
+        </p>
+        <div class="grid-2">
+          <div class="chip">Automate lead handling</div>
+          <div class="chip">Streamline operations</div>
+          <div class="chip">Eliminate repetitive tasks</div>
+          <div class="chip">Reduce human error</div>
+          <div class="chip">Connect everything into one system</div>
+        </div>
+      </section>
+
+      <section id="services" class="reveal">
+        <h2>What We Do</h2>
+        <div class="service-grid">
+          <article class="service">
+            <h3>Custom AI Software Development</h3>
+            <p>We build tailored AI systems designed around how your business operates.</p>
+          </article>
+          <article class="service">
+            <h3>Full Business AI Integration</h3>
+            <p>We implement AI across sales, operations, and communication workflows.</p>
+          </article>
+          <article class="service">
+            <h3>Automation & Process Streamlining</h3>
+            <p>We replace manual work with efficient, automated systems.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="process" class="reveal">
+        <h2>How It Works</h2>
+        <div class="workflow">
+          <article class="step">
+            <small>Step 1</small>
+            <div>
+              <strong>Audit & Identify Gaps</strong>
+              <p class="p">We analyze your business and find inefficiencies + revenue leaks.</p>
+            </div>
+          </article>
+          <article class="step">
+            <small>Step 2</small>
+            <div>
+              <strong>Build Your System</strong>
+              <p class="p">We design and develop custom AI software tailored to your workflows.</p>
+            </div>
+          </article>
+          <article class="step">
+            <small>Step 3</small>
+            <div>
+              <strong>Implement & Scale</strong>
+              <p class="p">We deploy, optimize, and ensure everything runs smoothly.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <h2>Built to Drive Real Business Outcomes</h2>
+        <div class="result-grid">
+          <div class="result">Hundreds of thousands generated for service businesses</div>
+          <div class="result">Increased lead conversion rates</div>
+          <div class="result">Reduced manual workload</div>
+          <div class="result">Scalable systems without added overhead</div>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <div class="founder">
+          <small>Founder</small>
+          <h2>Michael Melillo</h2>
+          <p class="p">
+            Founder of ProSync Digital Solutions with 3+ years of experience helping
+            businesses grow through systems, automation, and AI.
+          </p>
+          <p class="p">Bachelor's Degree from Kent State University.</p>
+          <p class="p">
+            Focus: Building custom AI systems that replace manual processes and help
+            businesses scale efficiently.
+          </p>
+        </div>
+      </section>
+
+      <section id="book" class="reveal final">
+        <h2>Stop Running Your Business Manually</h2>
+        <p class="p" style="margin-inline: auto">
+          Start automating, scaling, and operating with AI.
+        </p>
+        <a class="button primary" href="#" style="margin-top: 1rem; display: inline-block">Book a Call</a>
+      </section>
+    </main>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("show");
+          });
+        },
+        { threshold: 0.14 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProSync Digital Solutions - Premium AI Systems</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #05060b;
+        --surface: rgba(255, 255, 255, 0.04);
+        --surface-strong: rgba(255, 255, 255, 0.08);
+        --text: #f6f7fb;
+        --muted: #b4b8c7;
+        --border: rgba(255, 255, 255, 0.14);
+        --blue: #7a8cff;
+        --violet: #8f68ff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        min-height: 100%;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Manrope, system-ui, -apple-system, Segoe UI, sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      .backdrop {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+          radial-gradient(80rem 45rem at 90% -10%, rgba(122, 140, 255, 0.2), transparent 55%),
+          radial-gradient(60rem 35rem at 0% 30%, rgba(143, 104, 255, 0.14), transparent 60%),
+          #05060b;
+      }
+
+      .grid {
+        position: absolute;
+        inset: 0;
+        opacity: 0.2;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+        background-size: 46px 46px;
+        mask-image: radial-gradient(circle at 50% 20%, black 30%, transparent 85%);
+      }
+
+      .blob {
+        position: absolute;
+        width: 28rem;
+        height: 28rem;
+        filter: blur(80px);
+        border-radius: 999px;
+        animation: float 12s ease-in-out infinite;
+      }
+
+      .blob.a {
+        top: 4rem;
+        left: -6rem;
+        background: rgba(122, 140, 255, 0.22);
+      }
+
+      .blob.b {
+        top: 18rem;
+        right: -8rem;
+        background: rgba(143, 104, 255, 0.2);
+        animation-duration: 16s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0);
+        }
+        50% {
+          transform: translateY(-24px) translateX(18px);
+        }
+      }
+
+      .site {
+        position: relative;
+        z-index: 1;
+        width: min(1200px, calc(100% - 2.5rem));
+        margin: 0 auto;
+      }
+
+      .nav {
+        min-height: 92px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        font-family: Sora, sans-serif;
+        letter-spacing: 0.1em;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+      }
+
+      .nav a {
+        color: var(--muted);
+        text-decoration: none;
+        margin-left: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        min-height: calc(100vh - 92px);
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 3rem;
+        align-items: center;
+        padding: 2rem 0 4rem;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        border: 1px solid rgba(122, 140, 255, 0.45);
+        border-radius: 999px;
+        padding: 0.5rem 0.9rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        color: #c8d1ff;
+        background: rgba(122, 140, 255, 0.12);
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-family: Sora, sans-serif;
+        font-weight: 700;
+        font-size: clamp(2.4rem, 5.8vw, 4.9rem);
+        line-height: 1.04;
+        letter-spacing: -0.03em;
+        margin: 1rem 0;
+      }
+
+      .subtitle {
+        color: var(--muted);
+        max-width: 56ch;
+        line-height: 1.75;
+        font-size: clamp(1rem, 1.3vw, 1.2rem);
+      }
+
+      .cta {
+        margin-top: 1.8rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .btn {
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.86rem 1.35rem;
+        font-weight: 600;
+        font-size: 0.92rem;
+        text-decoration: none;
+        color: var(--text);
+        transition: 220ms ease;
+      }
+
+      .btn.primary {
+        background: linear-gradient(130deg, #f3f5ff, #bac7ff);
+        color: #0d111f;
+        border-color: transparent;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 40px -24px rgba(122, 140, 255, 0.8);
+        border-color: rgba(122, 140, 255, 0.5);
+      }
+
+      .mock {
+        border: 1px solid var(--border);
+        background: linear-gradient(170deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+        border-radius: 24px;
+        padding: 1rem;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 0 90px -40px rgba(122, 140, 255, 0.6);
+      }
+
+      .mock-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
+      }
+
+      .pill {
+        background: rgba(52, 211, 153, 0.2);
+        border: 1px solid rgba(52, 211, 153, 0.3);
+        color: #adf7d8;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        padding: 0.2rem 0.55rem;
+      }
+
+      .stack {
+        display: grid;
+        gap: 0.65rem;
+      }
+
+      .node {
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        background: rgba(10, 12, 20, 0.85);
+        border-radius: 12px;
+        padding: 0.85rem;
+      }
+
+      .node small {
+        color: var(--muted);
+      }
+
+      .progress {
+        margin-top: 0.75rem;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        overflow: hidden;
+      }
+
+      .progress > span {
+        display: block;
+        height: 100%;
+        width: 75%;
+        background: linear-gradient(90deg, var(--blue), var(--violet));
+        animation: load 2s ease;
+      }
+
+      @keyframes load {
+        from {
+          width: 0;
+        }
+      }
+
+      section {
+        padding: 4.5rem 0;
+      }
+
+      h2 {
+        font-family: Sora, sans-serif;
+        font-size: clamp(1.8rem, 3.4vw, 3rem);
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+        margin: 0 0 1rem;
+      }
+
+      .lead {
+        color: var(--muted);
+        max-width: 65ch;
+      }
+
+      .cards {
+        margin-top: 1.4rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--surface);
+        padding: 1.1rem;
+        transition: 240ms ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(122, 140, 255, 0.5);
+        background: var(--surface-strong);
+      }
+
+      .list {
+        margin: 1.2rem 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .list li {
+        border: 1px solid var(--border);
+        background: var(--surface);
+        border-radius: 12px;
+        padding: 0.75rem 0.95rem;
+      }
+
+      .steps {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--surface);
+        padding: 1rem;
+      }
+
+      .step b {
+        color: #c8d1ff;
+        letter-spacing: 0.09em;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+
+      .founder {
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+        padding: 1.4rem;
+      }
+
+      .final {
+        text-align: center;
+        border: 1px solid rgba(122, 140, 255, 0.4);
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(122, 140, 255, 0.16), rgba(122, 140, 255, 0.03));
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: 650ms ease;
+      }
+
+      .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 980px) {
+        .hero {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          padding-top: 1rem;
+        }
+
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .step {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="backdrop">
+      <div class="grid"></div>
+      <div class="blob a"></div>
+      <div class="blob b"></div>
+    </div>
+
+    <div class="site">
+      <nav class="nav">
+        <div class="brand">ProSync Digital Solutions</div>
+        <div>
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#book">Book a Call</a>
+        </div>
+      </nav>
+
+      <header class="hero reveal">
+        <div>
+          <span class="eyebrow">AI Automation for Businesses</span>
+          <h1>Custom AI Software That Runs Your Business</h1>
+          <p class="subtitle">
+            We build and implement AI across your entire business to automate operations,
+            eliminate inefficiencies, and increase revenue.
+          </p>
+          <div class="cta">
+            <a class="btn primary" href="#book">Book a Call</a>
+            <a class="btn" href="#process">See How It Works</a>
+          </div>
+        </div>
+
+        <aside class="mock">
+          <div class="mock-head">
+            <small>AI Workflow System</small>
+            <span class="pill">Live</span>
+          </div>
+          <div class="stack">
+            <div class="node">
+              <strong>Lead Captured</strong><br />
+              <small>23 new inbound leads in the last 24h</small>
+            </div>
+            <div class="node">
+              <strong>Qualification Agent</strong><br />
+              <small>Average response: 2.3 seconds</small>
+            </div>
+            <div class="node">
+              <strong>Revenue Impact</strong><br />
+              <small>+37% pipeline growth this quarter</small>
+              <div class="progress"><span></span></div>
+            </div>
+          </div>
+        </aside>
+      </header>
+
+      <section class="reveal">
+        <h2>Most Businesses Are Still Running Manually</h2>
+        <ul class="list">
+          <li>Missed leads</li>
+          <li>Slow responses</li>
+          <li>Repetitive admin work</li>
+          <li>Disconnected systems</li>
+          <li>Human error costing money</li>
+        </ul>
+        <p class="lead">These aren't people problems. They're system problems.</p>
+      </section>
+
+      <section class="reveal">
+        <h2>We Turn Businesses Into AI-Powered Systems</h2>
+        <p class="lead">
+          We don't just add tools. We rebuild how your business operates using AI.
+        </p>
+        <ul class="list">
+          <li>Automate lead handling</li>
+          <li>Streamline operations</li>
+          <li>Eliminate repetitive tasks</li>
+          <li>Reduce human error</li>
+          <li>Connect everything into one system</li>
+        </ul>
+      </section>
+
+      <section id="services" class="reveal">
+        <h2>What We Do</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Custom AI Software Development</h3>
+            <p class="lead">We build tailored AI systems designed around how your business operates.</p>
+          </article>
+          <article class="card">
+            <h3>Full Business AI Integration</h3>
+            <p class="lead">We implement AI across sales, operations, and communication workflows.</p>
+          </article>
+          <article class="card">
+            <h3>Automation & Process Streamlining</h3>
+            <p class="lead">We replace manual work with efficient, automated systems.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="process" class="reveal">
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <b>Step 1</b>
+            <div>
+              <h3>Audit & Identify Gaps</h3>
+              <p class="lead">We analyze your business and find inefficiencies + revenue leaks.</p>
+            </div>
+          </div>
+          <div class="step">
+            <b>Step 2</b>
+            <div>
+              <h3>Build Your System</h3>
+              <p class="lead">We design and develop custom AI software tailored to your workflows.</p>
+            </div>
+          </div>
+          <div class="step">
+            <b>Step 3</b>
+            <div>
+              <h3>Implement & Scale</h3>
+              <p class="lead">We deploy, optimize, and ensure everything runs smoothly.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <h2>Built to Drive Real Business Outcomes</h2>
+        <ul class="list">
+          <li>Hundreds of thousands generated for service businesses</li>
+          <li>Increased lead conversion rates</li>
+          <li>Reduced manual workload</li>
+          <li>Scalable systems without added overhead</li>
+        </ul>
+      </section>
+
+      <section class="reveal">
+        <div class="founder">
+          <small>Founder</small>
+          <h2 style="margin-top: 0.4rem">Michael Melillo</h2>
+          <p class="lead">
+            Founder of ProSync Digital Solutions with 3+ years of experience helping
+            businesses grow through systems, automation, and AI.
+          </p>
+          <p class="lead">Bachelor's Degree from Kent State University.</p>
+          <p class="lead">
+            Focus: Building custom AI systems that replace manual processes and help
+            businesses scale efficiently.
+          </p>
+        </div>
+      </section>
+
+      <section id="book" class="reveal final">
+        <h2>Stop Running Your Business Manually</h2>
+        <p class="lead" style="margin: 0 auto 1.2rem">
+          Start automating, scaling, and operating with AI.
+        </p>
+        <a class="btn primary" href="#">Book a Call</a>
+      </section>
+    </div>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("show");
+          });
+        },
+        { threshold: 0.16 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
